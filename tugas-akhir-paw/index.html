@@ -71,40 +71,6 @@
     <div class="whirly-loader" style="display: none;"></div>
     <div id="results" class="results container"></div>
   </section>
-  <ul id="new-releases-list"></ul>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-    // Fungsi untuk menampilkan daftar buku baru rilis
-    function showNewReleases() {
-      // Kirim permintaan ke Google Books API untuk mengambil daftar buku baru rilis
-      $.getJSON('https://www.googleapis.com/books/v1/volumes?q=intitle:new+releases', function(data) {
-        // Kosongkan daftar buku baru rilis sebelumnya
-        $('#new-releases-list').empty();
-
-        // Tampilkan daftar buku baru rilis
-        $.each(data.items, function(i, item) {
-          // Ambil judul buku, penulis, dan thumbnail dari API
-          var title = item.volumeInfo.title;
-          var author = item.volumeInfo.authors[0];
-          var thumbnail = item.volumeInfo.imageLinks.thumbnail;
-
-          // Tambahkan judul, penulis, dan thumbnail ke dalam daftar buku baru rilis
-          $('#new-releases-list').append(
-            '<li>' +
-            '<img src="' + thumbnail + '" alt="Thumbnail buku">' +
-            '<p>Judul: ' + title + '</p>' +
-            '<p>Penulis: ' + author + '</p>' +
-            '</li>'
-          );
-        });
-      });
-    }
-
-    //  Panggil fungsi showNewReleases saat halaman web dimuat
-    $(document).ready(function() {
-      showNewReleases();
-    });
-  </script>
   <a href="#" id="return-to-top" class="special1" aria-label="Go to Top"> 
     <i class="fa fa-arrow-up"></i>
   </a>
